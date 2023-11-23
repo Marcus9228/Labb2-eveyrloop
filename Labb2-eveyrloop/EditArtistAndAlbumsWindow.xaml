@@ -1,0 +1,96 @@
+﻿<Window x:Class="Labb2_eveyrloop.EditArtistAndAlbumsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Labb2_eveyrloop"
+        mc:Ignorable="d"
+        Title="Artist and Album editor" Height="500" Width="1300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" Width="250" Height="300"  x:Name="ArtistsListBox" SelectionChanged="ArtistsListBox_SelectionChanged">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="Padding" Value="1"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Name}" Width="240"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Column="3" Grid.Row="4" Content="Delete Artist and its albums" x:Name="DeleteArtistBtn" Click="DeleteArtistBtn_Click"/>
+        <Button Grid.Column="3" Grid.Row="5" Content="Add new Artist" x:Name="AddArtistBtn" Click="AddArtistBtn_Click"/>
+        <Button Grid.Column="3" Grid.Row="8" Content="Rename selected Artist" x:Name="EditArtistBtn" Click="EditArtistBtn_Click"/>
+        <TextBlock Grid.Column="3" Grid.Row="6" Text="Enter new Artist Name" FontWeight="Bold"/>
+        <TextBox Grid.Column="3" Grid.Row="7" x:Name="RenameArtistTextBox"/>
+
+        <ListView Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" Width="250" Height="300" x:Name="AlbumsListBox" SelectionChanged="AlbumsListBox_SelectionChanged">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="Padding" Value="1"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Albums" DisplayMemberBinding="{Binding Title}" Width="240"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Column="4" Grid.Row="4" Content="Delete Album" x:Name="DeleteAlbumBtn" Click="DeleteAlbumBtn_Click"/>
+        <Button Grid.Column="4" Grid.Row="5" Content="Add new Album" x:Name="AddAlbumBtn" Click="AddAlbumBtn_Click"/>
+        <Button Grid.Column="4" Grid.Row="8" Content="Rename selected Album" x:Name="EditAlbumBtn" Click="EditAlbumBtn_Click"/>
+        <TextBlock Grid.Column="4" Grid.Row="6" Text="Enter new album Name: " FontWeight="Bold"/>
+        <TextBox Grid.Column="4" Grid.Row="7" x:Name="RenameAlbumTextBox"/>
+
+        <ListView Grid.Column="5" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" Width="750" Height="300" x:Name="AlbumTracks">
+            <ListView.Resources>
+                <Style TargetType="GridViewColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="Padding" Value="1"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Name}" Width="200"/>
+                    <!--<GridViewColumn Header="Artist" DisplayMemberBinding="{Binding Composer}" Width="300"/>-->
+                    <GridViewColumn Header="Duration" DisplayMemberBinding="{Binding FormattedTime}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Grid.Column="5" Grid.Row="4" Content="Edit Track" x:Name="EditTrackBtn" Click="EditTrackBtn_Click"/>
+        <Button Grid.Column="5" Grid.Row="5" Content="Delete Track from album" x:Name="DeleteTrackBtn" Click="DeleteTrackBtn_Click"/>
+        <Button Grid.Column="5" Grid.Row="6" Content="Add new Track to album from all tracks across app" x:Name="AddTrackBtn" Click="AddTrackBtn_Click"/>
+    </Grid>
+</Window>
