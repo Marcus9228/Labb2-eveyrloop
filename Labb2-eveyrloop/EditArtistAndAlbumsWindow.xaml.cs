@@ -79,11 +79,6 @@ namespace Labb2_eveyrloop
             }
         }
 
-        //private void RefreshSongList()
-        //{
-        //    LoadTracks();
-        //}
-
         private void DeleteTrackBtn_Click(object sender, RoutedEventArgs e)
         {
             if (AlbumTracks.SelectedItem != null)
